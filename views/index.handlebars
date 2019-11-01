@@ -1,0 +1,13 @@
+<div class="container">
+  <ul>
+    {{#each article}}
+      <li class="card row">
+        <div class="col-md-6 about">
+          <h2 class="card-header">{{title}}</h2>
+          <a>{{link}}</a>
+        </div>
+        <button type="button" id="save" class="btn btn-danger col-md-3"></button>
+      </li>
+    {{/each}}
+  </ul>
+</div>

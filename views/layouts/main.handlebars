@@ -10,20 +10,25 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {{!-- Custom styling --}}
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="text/javascript" href="/assets/JS/app.js">
 
     <title>Super Webscraper</title>
 
 </head>
 <body>
     <header>
-        <a href=""
-        <button type="button">Scrape New Articles</button>
-        <button type="button">Saved Articles</button>
+        <a href="/">Home</a>
+        <a href="/saved">Saved Articles</a>
+        <a href="/scrape" class="btn btn-primary scrape">Scrape New Articles</a>
+        <a href="/clear" class="btn btn-primary clear">Clear Articles</a>
     </header>
     <div class="jumbotron">
+        <img src="https://images.unsplash.com/photo-1470219556762-1771e7f9427d?ixlib=rb-1.2.1&w=1000&q=80">
         
 
     </div>
-    {{{ body }}}
+    
+        {{{ body }}}
+    
 </body>
 </html>

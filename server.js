@@ -1,25 +1,33 @@
 var express = require("express");
-var mongojs = require("mongojs");
 var axios = require("axios");
 var cheerio = require("cheerio");
 var mongoose = require("mongoose");
-
+var db = require("./models");
 // Initialize Express
 var app = express();
+var PORT = 8000;
+// Establishing Handlebars
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+app.set("views", __dirname + '/views')
 
-// Database configuration
-var databaseUrl = "mongoHeadlines";
-var collections = ["scrapedData", "savedData"];
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static("public"));
 
-// Hook mongojs configuration to the db variable
-var db = mongojs(databaseUrl, collections);
-db.on("error", function(error) {
-  console.log("Database Error:", error);
-});
+// Mongo DB connection
+mongoose.connect("mongodb://localhost/mongoHeadlines", { useNewUrlParser: true });
 
-// Main route (simple Hello World Message)
 app.get("/", function(req, res) {
-  res.send("Hello world");
+    db.Article.find({})
+    .then(function(data){
+        
+        res.render("index", {article: data});
+        console.log(data)
+    })
+    
+
 });
 
 //Function to scrape information from new york times
@@ -29,45 +37,53 @@ app.get("/scrape", function(req, res){
 
         var $ = cheerio.load(response.data);
 
-        var results = [];
+        var results = {};
 
-        $("article").each(function(i, element){
+        // $("article").each(function(i, element){
+        //     //Capture link to article
+        //     results.link = $(this).find("a").attr("href");
+        //     //Capture the title of the article within the h2 element.
+        //     results.title = $(this).find("h2").text() || $(this).find("h2").children().text();
+          
+        //     db.Article.create(results)
+        //     .then(function(dbArticles){
+        //         console.log(dbArticles);
+        //     })
+        //     .catch(function(err){
+        //         console.log(err);
+        //     });
+        // });
+
+        $("article").each((i, element) => {
             //Capture link to article
-            var link = $(element).find("a").attr("href");
+            results.link = $(element).find("a").attr("href");
             //Capture the title of the article within the h2 element.
-            var title = $(element).find("h2").text();
-            //Some of the h2 elements are not filled or are null. If statment is used to change title to span within the h2 elements.
-            if(title === null || title === ""){
-                title = $(element).find("h2").children().text();
-            }
-            //Capture the summary of the article.
-        
-
-            //Push the information into an array to get later.
-            results.push({
-                link: link,
-                title: title
-
+            results.title = $(element).find("h2").text() || $(element).find("h2").children().text();
+          
+            db.Article.create(results)
+            .then((dbArticles) => {
+                console.log(dbArticles);
+            })
+            .catch((err) => {
+                console.log(err);
             });
-        
         });
 
-        db.scrapedData.insert(results);
-        console.log("data Scraped");
     });
 });
 //Pull all the scraped data and display as Json
 app.get("/all", function(req, res){
-    db.scrapedData.find({}, function(err, data){
+    db.Article.find({}, function(err, data){
         if(err){
         console.log(err);
         }else{
         res.json(data);
         }
     });
+  
 
 });
 
-app.listen(8000, function() {
-    console.log("App running on port 8000!");
+app.listen(PORT, function() {
+    console.log("App running on port "+ PORT + "!");
 });
