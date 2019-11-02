@@ -7,23 +7,45 @@
     {{!-- JQUERY --}}
     <script src="https://code.jquery.com/jquery.js"></script>
     {{!-- Bootstrap CSS --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/materia/bootstrap.min.css"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {{!-- Custom styling --}}
     <link rel="stylesheet" href="/assets/css/style.css">
+    {{!-- Custom javascript --}}
     <link rel="text/javascript" href="/assets/JS/app.js">
 
-    <title>Super Webscraper</title>
+    <title>Super Web scraper</title>
 
 </head>
 <body>
-    <navbar class="navbar">
-        <a href="/">Home</a>
-        <a href="/saved">Saved Articles</a>
-        <a href="/scrape" class="btn btn-primary scrape">Scrape New Articles</a>
-        <a href="/clear" class="btn btn-primary clear">Clear Articles</a>
-    </navbar>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="/">Super Web Scraper</a>
+  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/saved">Saved Articles</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-danger scrape">SCRAPE NEW ARTICLES!</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-danger clear">CLEAR ARTICLES!</a>
+      </li>
+    </ul>
+  </div>
+</nav>
     <div class="jumbotron">
-        <h1 class="text-center pageTitle">Super Webscraper</h1>
+        <h1 class="text-center pageTitle">Super Web scraper</h1>
         <img src="https://images.unsplash.com/photo-1470219556762-1771e7f9427d?ixlib=rb-1.2.1&w=1000&q=80" />
         <h2 class="centered">Select the above button to scrape new articles from New York Times</h2>
         
