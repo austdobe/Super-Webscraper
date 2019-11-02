@@ -39,21 +39,6 @@ app.get("/scrape", function(req, res){
 
         var results = {};
 
-        // $("article").each(function(i, element){
-        //     //Capture link to article
-        //     results.link = $(this).find("a").attr("href");
-        //     //Capture the title of the article within the h2 element.
-        //     results.title = $(this).find("h2").text() || $(this).find("h2").children().text();
-          
-        //     db.Article.create(results)
-        //     .then(function(dbArticles){
-        //         console.log(dbArticles);
-        //     })
-        //     .catch(function(err){
-        //         console.log(err);
-        //     });
-        // });
-
         $("article").each((i, element) => {
             //Capture link to article
             results.link = $(element).find("a").attr("href");

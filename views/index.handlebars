@@ -1,13 +1,17 @@
 <div class="container">
   <ul>
     {{#each article}}
-      <li class="card row">
-        <div class="col-md-6 about">
-          <h2 class="card-header">{{title}}</h2>
-          <a>{{link}}</a>
-        </div>
-        <button type="button" id="save" class="btn btn-danger col-md-3"></button>
-      </li>
+      {{#unless isSaved}}
+        <li class="card row">
+          <div class="about">
+            <h2 class="card-header">{{title}}</h2>
+            <p>{{link}}</p>
+          </div>
+          <div class="col-md-6">
+            <button type="button" id="save" class="btn btn-primary">Save</button>
+          </div>
+        </li>
+      {{/unless}}
     {{/each}}
   </ul>
 </div>

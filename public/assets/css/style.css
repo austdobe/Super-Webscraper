@@ -1,14 +1,46 @@
 body{
-    background-color: lightblue;
+    background-color: #051e3e;
 }
 .card{
     margin-top: 10px;
-    padding: 10px 20px
+    padding: 10px 20px;
+    background-color: #851e3e;
+    color: whitesmoke;
 }
-.btn{
-    float: right,
+#save{
+    border-radius: 50%;
+    background-color: #251e3e;
+    
+}
+.about{
+    display: inline;
+
+}
+h2{
+    font-size: 20px;
+}
+p{
+    font-size:16px;
+}
+
+.navbar{
+    background-color: #051e3e;
+}
+.jumbotron{
+    background-color: #251e3e;
+}
+.pageTitle{
+    color: whitesmoke;
+    padding-bottom: 30px;
+    text-decoration: blanchedalmond solid underline;
+
 }
 img{
     width: 100%;
-    max-height: 300px;
+    max-height: 350px;
+    z-index: -1;
+}
+a{
+    margin: 10px 20px;
+    /* padding: 10px 20px; */
 }
