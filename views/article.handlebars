@@ -1,5 +1,5 @@
 <ul class="text-center">
-  {{#each article}}
+  {{#each articles}}
     {{#if isSaved}}
       <li class="card row">
         <div class="about">
@@ -9,14 +9,15 @@
             <a href="{{link}}">{{link}}</a>
           </div>
             <a href="/article/{{this.id}}">Read More</a>
-          <a href="/saveArticle/{{this.id}}" class="btn btn-primary">Save</a>
+          <a href="/saveArticle/{{this.id}}" class="btn btn-primary">Remove</a>
       </li>
-    
-    {{else}}
-        <h1>You Have no Saved Articles</h1>
     {{/if}}
+    {{/each}}
+    {{#else}}
+        <h1 class="card">You do not have any saved articles!</h1>
     {{/else}}
-  {{/each}}
+
+  
 </ul>
 <div class="row">
     <div class="col"></div>
@@ -36,17 +37,17 @@
     </form>
 </div>
 <div class="row">
-    <div></div>
     <div>
-        {{if article.comment}}
-            {{each article.comment}}
+        {{#if article.comment}}
+            {{#each article.comment}}
                 <div class="card">
                     <p id="commentName">{{name}}</p>
                     <p>{{body}}</p>
                 </div>
-            {{each}}
-            {{else}}
-                <p>Enter the first comment on this Article</p>
-            {{/if}}
+            {{/each}}
+        {{/if}}
+        {{#else}}
+            <p>Enter the first comment on this Article</p>
+        {{/else}}
     </div>
 </div>

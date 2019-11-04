@@ -74,7 +74,8 @@ app.get("/all", (req, res) => {
 
 app.get("/saveArticle/:id", (req, res)=>{
     const articleId = req.params.id;
-    db.Article.update(
+    
+    db.Article.findOneAndUpdate(
         {
             _id: mongojs.ObjectId(articleId)
         },
@@ -94,11 +95,34 @@ app.get("/saveArticle/:id", (req, res)=>{
     )
     
 })
+app.get("/removeArticle/:id", (req, res)=>{
+    const articleId = req.params.id;
+    
+    db.Article.findOneAndUpdate(
+        {
+            _id: mongojs.ObjectId(articleId)
+        },
+        {
+            $set:
+            { 
+                isSaved: false
+            }
+        }, (err, data)=>{
+            if(err){
+                console.log(err)
+            }else{
+                console.log(data);
+                res.redirect("/saved")
+            }
+        }
+    )
+    
+})
 
 app.get("/saved", (req, res) => {
     db.Article.find({isSaved: true})
     .then((data)=>{
-        res.render("article", {articles: data})
+        res.render("saved", {articles: data})
         console.log(data)
     })
     .catch((err)=>{
@@ -124,7 +148,7 @@ app.get("/article/:id"), (req, res)=>{
 
            
            }else{
-               res.render("article", {article:data})
+                res.render("article" + {id: req.body.id})
            }
         })
 
