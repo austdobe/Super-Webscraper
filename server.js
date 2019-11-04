@@ -142,13 +142,14 @@ app.get("/article/:id"), (req, res)=>{
 
     db.Article.findOne({_id:articleId})
         .populate("notes")
-        .exec((err, data)=>{
+        .then((err, data)=>{
+            console.log(data)
             if(err){
                 console.log(err)
 
            
            }else{
-                res.render("article" + {id: req.body.id})
+                res.render("article" + {id: data})
            }
         })
 
