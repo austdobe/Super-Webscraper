@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var db = require("./models");
 var cheerio = require("cheerio");
 var axios = require("axios");
-
+var mongojs = require("mongojs")
 
 // Initialize Express
 var app = express();
@@ -72,10 +72,33 @@ app.get("/all", (req, res) => {
     })
 });
 
+app.get("/saveArticle/:id", (req, res)=>{
+    const articleId = req.params.id;
+    db.Article.update(
+        {
+            _id: mongojs.ObjectId(articleId)
+        },
+        {
+            $set:
+            { 
+                isSaved: true
+            }
+        }, (err, data)=>{
+            if(err){
+                console.log(err)
+            }else{
+                console.log(data);
+                res.redirect("/")
+            }
+        }
+    )
+    
+})
+
 app.get("/saved", (req, res) => {
-    db.Article.find({isSaved})
+    db.Article.find({isSaved: true})
     .then((data)=>{
-        res.render("index", {article: data})
+        res.render("article", {articles: data})
         console.log(data)
     })
     .catch((err)=>{
@@ -93,7 +116,7 @@ app.get("/clear", (req, res) => {
 app.get("/article/:id"), (req, res)=>{
     const articleId = req.params.id;
 
-    db.Article.find({_id:articleId})
+    db.Article.findOne({_id:articleId})
         .populate("notes")
         .exec((err, data)=>{
             if(err){

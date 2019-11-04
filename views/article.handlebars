@@ -1,8 +1,23 @@
-<div class="row">
-    <h3 class="card">{{article.title}}</h3>
-    <h5 class="card-panel">{{body}}</h5>
-</div>
-
+<ul class="text-center">
+  {{#each article}}
+    {{#if isSaved}}
+      <li class="card row">
+        <div class="about">
+          <h2 class="card-header">{{title}}</h2>
+          <div class="card-body">
+            <p>{{summary}}</p>
+            <a href="{{link}}">{{link}}</a>
+          </div>
+            <a href="/article/{{this.id}}">Read More</a>
+          <a href="/saveArticle/{{this.id}}" class="btn btn-primary">Save</a>
+      </li>
+    
+    {{else}}
+        <h1>You Have no Saved Articles</h1>
+    {{/if}}
+    {{/else}}
+  {{/each}}
+</ul>
 <div class="row">
     <div class="col"></div>
     <form>
