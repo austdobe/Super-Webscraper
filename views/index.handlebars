@@ -1,17 +1,19 @@
-<div class="container">
-  <ul class="text-center">
-    {{#each article}}
-      {{#unless isSaved}}
-        <li class="card row">
-          <div class="about">
-            <h2 class="card-header">{{title}}</h2>
-            <div class="card-body">
-              <p>{{summary}}</p>
-              <a href="{{link}}">{{link}}</a>
-            </div>
-            <button type="button" id="save" data-id="{{this.id}}" class="btn btn-primary">Save</button>
-        </li>
-      {{/unless}}
-    {{/each}}
-  </ul>
+<div class="jumbotron">
+    <img src="https://images.unsplash.com/photo-1470219556762-1771e7f9427d?ixlib=rb-1.2.1&w=1000&q=80" />
+    <h2 class="centered">Select the above button to scrape new articles from New York Times</h2>
 </div>
+<ul class="text-center">
+  {{#each article}}
+    {{#unless isSaved}}
+      <li class="card row">
+        <div class="about">
+          <h2 class="card-header">{{title}}</h2>
+          <div class="card-body">
+            <p>{{summary}}</p>
+            <a href="{{link}}">{{link}}</a>
+          </div>
+          <button type="button" id="save" data-id="{{this.id}}" class="btn btn-primary">Save</button>
+      </li>
+    {{/unless}}
+  {{/each}}
+</ul>

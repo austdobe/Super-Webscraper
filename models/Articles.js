@@ -30,17 +30,6 @@ var ArticleSchema = new Schema({
 
 });
 
-ArticleSchema.methods.setFullLink = function(){
-    fullLink = "https://www.nytimes.com"+link
-    return fullLink
-}
-
-
-// UserSchema.methods.setFullName = function() {
-//     this.fullName = this.firstName + " " + this.lastName;
-//     return this.fullName;
-//   };
-  
 var Article = mongoose.model("Article", ArticleSchema);
 
 module.exports = Article;
