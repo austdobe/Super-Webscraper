@@ -14,10 +14,10 @@ This project was created with:
 
 * NodeJS 
 * ExpressJS
+* Express-Handlebars
 * JavaScript
 * jQuery
 * Bootstrap CSS
-* HTML
 * CSS
 
 ## Future features 
