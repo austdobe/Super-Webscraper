@@ -1,11 +1,5 @@
 # Super-Webscraper
 
-Super Scraper is a web scraping app. It is scraping information from New York Times. It is displaying the Title, Summary and link within a card. You can save articles and click on the links to read the full article. There is also a link to New York times on the footer. 
-
-This app is built with Node.JS, Handlebars, Mongoose/Mongo, and express.
-
-
-
 #### 'Super Webscraper' scrapes news articles from the New York Times. 
 
 ## How it works:
