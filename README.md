@@ -17,6 +17,11 @@ This project was created with:
 * Express-Handlebars
 * JavaScript
 * jQuery
+* Mongo
+* Mongoose
+* Cherio
+* Axios
+* Sequelize
 * Bootstrap CSS
 * CSS
 
