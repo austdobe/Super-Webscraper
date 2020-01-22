@@ -4,7 +4,7 @@ Super Scraper is a web scraping app. It is scraping information from New York Ti
 
 This app is built with Node.JS, Handlebars, Mongoose/Mongo, and express.
 
-Future features will include completing the note feature to allow the user to create notes for themselves. I will also work on a smoother functionality when saving the article. 
+
 
 #### 'Super Webscraper' scrapes news articles from the New York Times. 
 
@@ -26,10 +26,14 @@ This project was created with:
 * HTML
 * CSS
 
+## Future features 
+
+#### 1. Saving notes on articles for later viewing.
+#### 2. Allow more options for articles. (ie. different sources, by genre, ect.)
 
 
 ## Deployed Site: 
-#### https://friend-finder-ad-2019.herokuapp.com/survey.html
+#### https://super-webscraper.herokuapp.com/
 
 ## Contributors
 * Austin Dober | https://github.com/austdobe
