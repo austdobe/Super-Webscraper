@@ -1,6 +1,6 @@
 # Super-Webscraper
 
-#### 'Super Webscraper' scrapes news articles from the New York Times. 
+#### 'Super Webscraper' scrapes news articles from the New York Times.
 
 ## How it works:
 #### 1. Press the button to scrape new articles.
